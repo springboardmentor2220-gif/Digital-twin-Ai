@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Twin AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: #667eea !important;
+        }
+        .nav-link {
+            color: #555 !important;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #667eea !important;
+        }
+        .dropdown-item:active {
+            background: #667eea;
+            color: white;
+        }
+        .btn-primary {
+            background: #667eea;
+            border: none;
+        }
+        .btn-primary:hover {
+            background: #5a6fd6;
+        }
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #667eea;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .admin-badge {
+            font-size: 0.6rem;
+            background: #ed64a6;
+            color: white;
+            padding: 0.15rem 0.5rem;
+            border-radius: 30px;
+            margin-left: 0.3rem;
+            vertical-align: middle;
+        }
+        /* Optional: active link highlight */
+        .nav-link.active-link {
+            color: #667eea !important;
+            font-weight: 600;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-brain"></i> Digital Twin AI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    {% if current_user.is_authenticated %}
+
+                        <!-- ===== ADMIN DROPDOWN (only visible to admins) ===== -->
+                        {% if current_user.is_admin %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-user-cog"></i> Admin
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="{{ url_for('admin_dashboard') }}">
+                                        <i class="fas fa-chart-pie me-2"></i>Dashboard
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('admin_users') }}">
+                                        <i class="fas fa-users me-2"></i>Manage Users
+                                    </a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('user_dashboard') }}">
+                                        <i class="fas fa-user me-2"></i>My Profile
+                                    </a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        <!-- ===== USER FEATURES (visible to EVERYONE – admins AND normal users) ===== -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('user_dashboard') }}">
+                                <i class="fas fa-tachometer-alt me-1"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('user_financial') }}">
+                                <i class="fas fa-coins me-1"></i>Financial
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('user_study') }}">
+                                <i class="fas fa-book-open me-1"></i>Study
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('user_fitness') }}">
+                                <i class="fas fa-running me-1"></i>Fitness
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('user_simulation') }}">
+                                <i class="fas fa-robot me-1"></i>Simulation
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('user_assistant') }}">
+                                <i class="fas fa-comment-dots me-1"></i>Assistant
+                            </a>
+                        </li>
+
+                        <!-- ===== USER DROPDOWN (avatar + logout) ===== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                                <span class="user-avatar">{{ current_user.username[0]|upper }}</span>
+                                <span class="ms-1">{{ current_user.username }}</span>
+                                {% if current_user.is_admin %}
+                                    <span class="admin-badge">Admin</span>
+                                {% endif %}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="{{ url_for('user_dashboard') }}">
+                                    <i class="fas fa-user me-2"></i>Profile
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('user_simulation') }}">
+                                    <i class="fas fa-chart-line me-2"></i>Simulate
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="{{ url_for('logout') }}">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                </a></li>
+                            </ul>
+                        </li>
+
+                    {% else %}
+
+                        <!-- ===== NOT LOGGED IN ===== -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('login') }}">
+                                <i class="fas fa-sign-in-alt me-1"></i>Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('register') }}">
+                                <i class="fas fa-user-plus me-1"></i>Register
+                            </a>
+                        </li>
+
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== FLASH MESSAGES ===== -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="container mt-3">
+                {% for msg in messages %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        {{ msg }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- ===== PAGE CONTENT ===== -->
+    {% block content %}{% endblock %}
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="mt-5 py-4 bg-light border-top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <span class="text-muted small">© 2026 Digital Twin AI – All rights reserved.</span>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-muted text-decoration-none me-3 small">Privacy</a>
+                    <a href="#" class="text-muted text-decoration-none me-3 small">Terms</a>
+                    <a href="#" class="text-muted text-decoration-none small">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
