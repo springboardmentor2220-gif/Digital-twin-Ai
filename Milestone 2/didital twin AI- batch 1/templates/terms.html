@@ -1,0 +1,300 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<style>
+    .terms-wrapper {
+        background: linear-gradient(145deg, #f0f4ff 0%, #faf0ff 100%);
+        border-radius: 28px;
+        padding: 0;
+        max-width: 1100px;
+        margin: 0 auto;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    }
+
+    /* ----- Hero Banner ----- */
+    .terms-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 3rem 2rem 2.5rem;
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 28px 28px 0 0;
+    }
+    .terms-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 400px;
+        height: 400px;
+        background: rgba(255,255,255,0.06);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+    .terms-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -10%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255,255,255,0.04);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+    .hero-content h1 {
+        font-weight: 800;
+        font-size: 2.8rem;
+        text-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 500px;
+        margin: 0.5rem auto 0;
+    }
+    .hero-illustration {
+        max-width: 200px;
+        filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15));
+    }
+
+    /* ----- Glass Cards ----- */
+    .glass-card {
+        background: rgba(255,255,255,0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 20px;
+        padding: 1.8rem 2rem;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    .glass-card:hover {
+        box-shadow: 0 12px 48px rgba(0,0,0,0.1);
+        transform: translateY(-4px);
+    }
+    .glass-card .card-icon {
+        font-size: 2.4rem;
+        margin-bottom: 0.6rem;
+        display: inline-block;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .glass-card h5 {
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 0.3rem;
+    }
+    .glass-card p, .glass-card li {
+        color: #4a5568;
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    .glass-card ul {
+        padding-left: 1.2rem;
+    }
+    .glass-card ul li {
+        margin-bottom: 0.3rem;
+    }
+
+    /* ----- Highlight box ----- */
+    .highlight-box {
+        background: rgba(102,126,234,0.06);
+        border-left: 4px solid #667eea;
+        padding: 0.8rem 1.2rem;
+        border-radius: 8px;
+        margin-top: 0.5rem;
+    }
+
+    /* ----- Responsive ----- */
+    @media (max-width: 768px) {
+        .hero-content h1 { font-size: 2rem; }
+        .glass-card { padding: 1.2rem; }
+        .terms-hero { padding: 1.8rem 1rem; }
+        .hero-illustration { max-width: 120px; }
+        .hero-content p { max-width: 100%; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="terms-wrapper">
+    <!-- ===== HERO BANNER (with image) ===== -->
+    <div class="terms-hero">
+        <div class="hero-content">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1><i class="fas fa-file-contract me-2"></i>Terms & Conditions</h1>
+                    <p>Please read these terms carefully before using Digital Twin AI.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <img src="https://img.icons8.com/fluency/240/000000/artificial-intelligence.png" alt="AI" class="hero-illustration">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MAIN CONTENT (unchanged) ===== -->
+    <div class="p-4 p-md-5">
+
+        <!-- ===== ACCEPTANCE OF TERMS ===== -->
+        <div class="row g-4 mb-4">
+            <div class="col-12">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+                    <h5>Acceptance of Terms</h5>
+                    <p>
+                        By creating an account and using Digital Twin AI, you agree to these Terms & Conditions.
+                        If you do not agree with any part of these terms, you must not use the platform.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== ACCOUNT RESPONSIBILITY & YOUR DATA (2 columns) ===== -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="glass-card" style="border-top: 4px solid #4facfe;">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><i class="fas fa-user"></i></div>
+                    <h5>Account Responsibility</h5>
+                    <ul>
+                        <li>You are responsible for maintaining the confidentiality of your username and password.</li>
+                        <li>You are responsible for all activities that occur under your account.</li>
+                        <li>You must notify us immediately of any unauthorised access to your account.</li>
+                        <li>You must be at least 13 years old to use this platform.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="glass-card" style="border-top: 4px solid #43e97b;">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><i class="fas fa-database"></i></div>
+                    <h5>Your Data</h5>
+                    <ul>
+                        <li>You own all data you enter into the platform (transactions, study logs, fitness logs, etc.).</li>
+                        <li>You grant us a licence to process your data to provide the platform's features (analytics, forecasts, recommendations).</li>
+                        <li>We do not sell your data to third parties.</li>
+                        <li>You may request deletion of your data at any time.</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <i class="fas fa-shield-alt text-primary me-1"></i>
+                        <strong>Data Security:</strong> We use encryption and secure practices to protect your data.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== AI ASSISTANT & PROHIBITED USES (2 columns) ===== -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="glass-card" style="border-top: 4px solid #f093fb;">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><i class="fas fa-robot"></i></div>
+                    <h5>AI Assistant & Predictions</h5>
+                    <ul>
+                        <li>All forecasts, predictions, and AI responses are <strong>informational only</strong>.</li>
+                        <li>They are not professional financial, medical, or legal advice.</li>
+                        <li>You use this information at your own discretion and risk.</li>
+                        <li>The AI assistant may occasionally generate inaccurate responses – always verify important information.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="glass-card" style="border-top: 4px solid #fc8181;">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #fc8181, #e53e3e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><i class="fas fa-ban"></i></div>
+                    <h5>Prohibited Uses</h5>
+                    <p>You agree not to use Digital Twin AI for any unlawful or prohibited purpose, including but not limited to:</p>
+                    <ul>
+                        <li>Uploading malicious code or viruses.</li>
+                        <li>Attempting to gain unauthorised access to other users' accounts.</li>
+                        <li>Using the platform to harass, abuse, or harm others.</li>
+                        <li>Submitting false or misleading information.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== INTELLECTUAL PROPERTY & DISCLAIMER (2 columns) ===== -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="glass-card" style="border-top: 4px solid #ed64a6;">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ed64a6, #d53f8c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><i class="fas fa-copyright"></i></div>
+                    <h5>Intellectual Property</h5>
+                    <p>
+                        All content on this platform – including text, graphics, code, and design – is owned by Digital Twin AI
+                        and is protected by copyright and intellectual property laws.
+                        You may not copy, modify, distribute, or reproduce any part of the platform without explicit permission.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="glass-card" style="border-top: 4px solid #ed8936;">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ed8936, #dd6b20); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h5>Disclaimer & Limitation of Liability</h5>
+                    <ul>
+                        <li>Digital Twin AI is provided "as is" without warranties of any kind.</li>
+                        <li>We do not guarantee that the platform will be error‑free or continuously available.</li>
+                        <li>We are not liable for any damages arising from your use of the platform.</li>
+                        <li>Financial, academic, and fitness predictions are estimates – not guarantees.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== ACCOUNT TERMINATION & CHANGES TO TERMS (2 columns) ===== -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="glass-card" style="border-top: 4px solid #667eea;">
+                    <div class="card-icon"><i class="fas fa-ban"></i></div>
+                    <h5>Account Termination</h5>
+                    <p>
+                        We reserve the right to suspend or terminate your account if you violate these terms.
+                        You may also delete your account at any time by contacting us.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="glass-card" style="border-top: 4px solid #a18cd1;">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><i class="fas fa-gavel"></i></div>
+                    <h5>Changes to Terms</h5>
+                    <p>
+                        We may update these terms from time to time. Continued use of Digital Twin AI after changes
+                        constitutes your acceptance of the updated terms.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CONTACT ===== -->
+        <div class="row g-4 mb-4">
+            <div class="col-12">
+                <div class="glass-card text-center">
+                    <div class="card-icon"><i class="fas fa-envelope"></i></div>
+                    <h5>Contact Us</h5>
+                    <p>
+                        If you have any questions about these terms, please <a href="{{ url_for('contact') }}" class="fw-bold text-primary">contact us</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== LAST UPDATED ===== -->
+        <div class="text-muted text-center small mt-4 pt-3 border-top">
+            <i class="far fa-calendar-alt me-1"></i> Last updated: July 2026 &nbsp;|&nbsp; <i class="fas fa-gavel me-1"></i> Terms apply
+            <div class="mt-2">
+                <a href="{{ url_for('index') }}" class="text-muted text-decoration-none me-3 small">Home</a>
+                <a href="{{ url_for('about') }}" class="text-muted text-decoration-none me-3 small">About</a>
+                <a href="{{ url_for('privacy') }}" class="text-muted text-decoration-none me-3 small">Privacy</a>
+                <a href="{{ url_for('contact') }}" class="text-muted text-decoration-none small">Contact</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
