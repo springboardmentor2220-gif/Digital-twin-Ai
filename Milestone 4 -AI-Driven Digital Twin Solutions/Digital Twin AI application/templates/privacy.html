@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<style>
+    .privacy-wrapper {
+        background: linear-gradient(145deg, #f0f4ff 0%, #faf0ff 100%);
+        border-radius: 28px;
+        padding: 0;
+        max-width: 1100px;
+        margin: 0 auto;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    }
+
+    /* ----- Hero Banner ----- */
+    .privacy-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 3rem 2rem 2.5rem;
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 28px 28px 0 0;
+    }
+    .privacy-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 400px;
+        height: 400px;
+        background: rgba(255,255,255,0.06);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+    .privacy-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -10%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255,255,255,0.04);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+    .hero-content h1 {
+        font-weight: 800;
+        font-size: 2.8rem;
+        text-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 500px;
+        margin: 0.5rem auto 0;
+    }
+    .hero-illustration {
+        max-width: 200px;
+        filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15));
+    }
+
+    /* ----- Glass Cards ----- */
+    .glass-card {
+        background: rgba(255,255,255,0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 20px;
+        padding: 1.8rem 2rem;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    .glass-card:hover {
+        box-shadow: 0 12px 48px rgba(0,0,0,0.1);
+        transform: translateY(-4px);
+    }
+    .glass-card .card-icon {
+        font-size: 2.4rem;
+        margin-bottom: 0.6rem;
+        display: inline-block;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .glass-card h5 {
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 0.3rem;
+    }
+    .glass-card p, .glass-card li {
+        color: #4a5568;
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    .glass-card ul {
+        padding-left: 1.2rem;
+    }
+    .glass-card ul li {
+        margin-bottom: 0.3rem;
+    }
+
+    /* ----- Highlight box ----- */
+    .highlight-box {
+        background: rgba(102,126,234,0.06);
+        border-left: 4px solid #667eea;
+        padding: 0.8rem 1.2rem;
+        border-radius: 8px;
+        margin-top: 0.5rem;
+    }
+
+    /* ----- Responsive ----- */
+    @media (max-width: 768px) {
+        .hero-content h1 { font-size: 2rem; }
+        .glass-card { padding: 1.2rem; }
+        .privacy-hero { padding: 1.8rem 1rem; }
+        .hero-illustration { max-width: 120px; }
+        .hero-content p { max-width: 100%; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="privacy-wrapper">
+    <!-- ===== HERO BANNER (with image) ===== -->
+    <div class="privacy-hero">
+        <div class="hero-content">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1><i class="fas fa-shield-alt me-2"></i>Privacy Policy</h1>
+                    <p>Your privacy is our priority. We are committed to protecting your personal data.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <img src="https://img.icons8.com/fluency/240/000000/artificial-intelligence.png" alt="AI" class="hero-illustration">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MAIN CONTENT (unchanged) ===== -->
+    <div class="p-4 p-md-5">
+        <!-- ===== INFORMATION WE COLLECT ===== -->
+        <div class="row g-4 mb-4">
+            <div class="col-12">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="fas fa-database"></i></div>
+                    <h5>Information We Collect</h5>
+                    <p>We collect the following personal information when you use Digital Twin AI:</p>
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>Account data</strong> – username, email, password hash (securely stored).</li>
+                                <li><strong>Financial data</strong> – income, expenses, savings, transactions you choose to log.</li>
+                                <li><strong>Study data</strong> – study hours, subjects, productivity scores.</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>Fitness data</strong> – activity types, duration, calories burned.</li>
+                                <li><strong>Goals</strong> – descriptions and target dates.</li>
+                                <li><strong>Chat messages</strong> – questions and responses with the AI assistant.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== HOW WE USE YOUR DATA ===== -->
+        <div class="row g-4 mb-4">
+            <div class="col-12">
+                <div class="glass-card">
+                    <div class="card-icon"><i class="fas fa-cogs"></i></div>
+                    <h5>How We Use Your Data</h5>
+                    <p>Your data is used solely to:</p>
+                    <ul>
+                        <li>Provide personalised analytics, forecasts, and recommendations.</li>
+                        <li>Enable the AI assistant to give context‑aware advice.</li>
+                        <li>Track your progress and display dashboards.</li>
+                        <li>Improve the platform (aggregated, anonymised insights).</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <i class="fas fa-check-circle text-primary me-1"></i>
+                        <strong>We do not</strong> sell, rent, or share your personal data with third parties for marketing purposes.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== DATA SECURITY ===== -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="glass-card" style="border-top: 4px solid #48bb78;">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #48bb78, #38a169); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><i class="fas fa-lock"></i></div>
+                    <h5>Data Security</h5>
+                    <p>
+                        We use industry‑standard encryption (HTTPS) and secure password hashing (Werkzeug) to protect your data.
+                        All databases are stored securely and access is restricted to authorised administrators.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="glass-card" style="border-top: 4px solid #ed8936;">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ed8936, #dd6b20); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><i class="fas fa-cookie-bite"></i></div>
+                    <h5>Cookies</h5>
+                    <p>
+                        We use session cookies to keep you logged in and to maintain your preferences.
+                        No third‑party tracking cookies are used. You can disable cookies in your browser settings,
+                        but some features may not work as expected.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== YOUR RIGHTS & THIRD‑PARTY SERVICES ===== -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="glass-card" style="border-top: 4px solid #667eea;">
+                    <div class="card-icon"><i class="fas fa-user-cog"></i></div>
+                    <h5>Your Rights</h5>
+                    <ul>
+                        <li><strong>Access</strong> – view your personal data at any time.</li>
+                        <li><strong>Correct</strong> – update your profile information.</li>
+                        <li><strong>Delete</strong> – request deletion of your account and associated data.</li>
+                        <li><strong>Object</strong> – restrict processing of your data.</li>
+                    </ul>
+                    <p class="mt-2">To exercise these rights, please <a href="{{ url_for('contact') }}" class="fw-bold text-primary">contact us</a>.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="glass-card" style="border-top: 4px solid #f5576c;">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #f5576c, #f093fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"><i class="fas fa-globe"></i></div>
+                    <h5>Third‑Party Services</h5>
+                    <p>
+                        We use <strong>Google Gemini</strong> for the AI assistant (optional). When you use the assistant,
+                        your questions and profile context may be sent to Google's API.
+                        No other third‑party services are used.
+                    </p>
+                    <div class="highlight-box" style="border-left-color: #f5576c;">
+                        <i class="fas fa-info-circle text-danger me-1"></i>
+                        You can choose not to use the AI assistant if you prefer to avoid sharing data with third parties.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== LAST UPDATED ===== -->
+        <div class="text-muted text-center small mt-4 pt-3 border-top">
+            <i class="far fa-calendar-alt me-1"></i> Last updated: July 2026 &nbsp;|&nbsp; <i class="fas fa-shield-alt me-1"></i> Privacy first
+            <div class="mt-2">
+                <a href="{{ url_for('index') }}" class="text-muted text-decoration-none me-3 small">Home</a>
+                <a href="{{ url_for('about') }}" class="text-muted text-decoration-none me-3 small">About</a>
+                <a href="{{ url_for('contact') }}" class="text-muted text-decoration-none small">Contact</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
